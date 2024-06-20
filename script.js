@@ -39,7 +39,7 @@ function restart(){
 btn_restart.addEventListener('click', restart);
 
 // Jogadas
-function registrarJogada(pos){
+function play(pos){
     let idPosition = pos.target.id;
     if(arrayPlayer1.includes(idPosition) || arrayPlayer2.includes(idPosition)){
         alert('Posição já marcada');
@@ -62,7 +62,7 @@ function registrarJogada(pos){
 positions.forEach(pos => {
         pos.addEventListener('click', (pos) => {
             if(gameStatus){
-                registrarJogada(pos);
+                play(pos);
             }
             else{
                 alert("Você deve iniciar a partida");
