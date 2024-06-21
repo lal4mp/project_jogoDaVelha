@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
 body{
     width: 100vw;
     height: 100vh;
@@ -6,25 +8,59 @@ body{
     align-items: center;
 }
 
-/* botoes de iniciar e zerar */
+/* título e textos */
+h1 {
+    font-family: "Courier Prime";
+    font-weight: 700;
+}
+h3 {
+    font-family: "Courier Prime";
+    font-weight: 400;
+    font-size: 15px;
+    text-align: center;
+}
+
+/* index2 - inputs */
+#div_inputs {
+    display: grid;
+    gap: 10px;
+    margin-bottom: 30px;
+}
+#div_inputs input {
+    width: 200px;
+    height: 25px;
+    border: 2px solid black;
+    border-radius: 5px;
+    background-color: rgb(222, 220, 220);
+}
+#div_inputs label {
+    font-family: "Courier Prime";
+    font-weight: 400;
+}
+
+/* botões de iniciar, zerar e finalizar */
 .btn-actions {
-    width: 80px;
-    height: 30px;
+    width: fit-content;
+    height: fit-content;
     background-color: rgb(0, 0, 0);
     color: white;
+    font-family: "Courier Prime";
+    font-weight: 400;
+    font-style: italic;
     border: 1px solid black;
     box-shadow: 2px 2px 2px black;
     cursor: pointer;
 }
 .btn-actions:hover {
-    background-color: rgb(86, 86, 86);
+    background-color: rgb(69, 69, 69);
 }
-.btn-actions2 {
-    display: none;
+.btn-actions a {
+    text-decoration: none;
+    color: white;
 }
 
 /* tabuleiro */
-#div_tabuleiro {
+.div_tabuleiro {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 0px;
@@ -55,7 +91,44 @@ button:hover {
 }
 
 /* imagens */
-img {
+.img_positions {
     width: 60px;
     height: 60px;
+}
+#img_player {
+    width: 15px;
+    height: 15px;
+}
+
+/* placar */
+.div_placar {
+    width: 50vw;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+}
+#player1 {
+    padding-left: 15px;
+}
+#player2 {
+    position: absolute;
+    right: 0.1px;
+}
+
+/* resultados */
+.div_resultados {
+    width: 50vw;
+    display: grid;
+    justify-content: center;
+    text-align: center;
+}
+#result_player1, #result_player2 {
+    display: flex;
+    margin: 5px;
+}
+
+/* classe display none */
+.display_none {
+    display: none;
 }
