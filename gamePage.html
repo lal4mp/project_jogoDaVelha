@@ -11,8 +11,16 @@
     <h1>Jogo da Velha</h1>
 
     <div class="div_placar">
-        <div id="player1">Player 1 <img src="images/img-bola.png" id="img_player"> <p>0</p> </div>
-        <div id="player2">Player 2 <img src="images/img-x.png" id="img_player"> <p>0</p> </div>
+        <div id="player1">
+            <img src="images/img-bola.png" class="img_player">
+            <p id="name_p1">Player 1</p>
+            <p id="scores1">0</p> 
+        </div>
+        <div id="player2">
+            <img src="images/img-x.png" class="img_player">
+            <p id="name_p2">Player 2</p>
+            <p id="scores2">0</p> 
+        </div>
     </div>
 
     <div class="div_resultados">
@@ -21,23 +29,41 @@
         <p id="result_final"></p>
     </div>
 
-    <h3 id="msg-player"></h3>
+    <h3 id="msg_player"></h3>
 
     <div class="div_tabuleiro">
-        <button class="btn1"><img src="images/img-branca.png" alt="" id="p1" class="img_positions"></button>
-        <button class="btn1"><img src="images/img-branca.png" alt="" id="p2" class="img_positions"></button>
-        <button class="btn2"><img src="images/img-branca.png" alt="" id="p3" class="img_positions"></button>
-        <button class="btn1"><img src="images/img-branca.png" alt="" id="p4" class="img_positions"></button>
-        <button class="btn1"><img src="images/img-branca.png" alt="" id="p5" class="img_positions"></button>
-        <button class="btn2"><img src="images/img-branca.png" alt="" id="p6" class="img_positions"></button>
-        <button class="btn3"><img src="images/img-branca.png" alt="" id="p7" class="img_positions"></button>
-        <button class="btn3"><img src="images/img-branca.png" alt="" id="p8" class="img_positions"></button>
-        <button><img src="images/img-branca.png" alt="" id="p9" class="img_positions"></button>
+        <button class="btn1 positions" id="p1">
+            <img src="images/img-branca.png" class="img_positions" id="i1">
+        </button>
+        <button class="btn1 positions" id="p2">
+            <img src="images/img-branca.png" class="img_positions">
+        </button>
+        <button class="btn2 positions" id="p3">
+            <img src="images/img-branca.png" class="img_positions">
+        </button>
+        <button class="btn1 positions" id="p4">
+            <img src="images/img-branca.png" class="img_positions">
+        </button>
+        <button class="btn1 positions" id="p5">
+            <img src="images/img-branca.png" class="img_positions">
+        </button>
+        <button class="btn2 positions" id="p6">
+            <img src="images/img-branca.png" class="img_positions">
+        </button>
+        <button class="btn3 positions" id="p7">
+            <img src="images/img-branca.png" class="img_positions">
+        </button>
+        <button class="btn3 positions" id="p8">
+            <img src="images/img-branca.png" class="img_positions">
+        </button>
+        <button class="positions" id="p9">
+            <img src="images/img-branca.png" class="img_positions">
+        </button>
     </div>
 
     <div>
-        <button class="btn-actions" id="btn-restart">Nova Partida</button>
-        <button class="btn-actions" id="btn-end">Finalizar Jogo</button>
+        <button class="btn_actions" id="btn_restart">Nova Partida</button>
+        <button class="btn_actions" id="btn_end">Finalizar Jogo</button>
     </div>
     
 

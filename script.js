@@ -1,12 +1,15 @@
-let positions = document.querySelectorAll(".img_positions");
+let positions = document.querySelectorAll(".positions");
 let tabuleiro = document.querySelector(".div_tabuleiro")
 let resultados = document.querySelector(".div_resultados");
 let placar = document.querySelector(".div_placar");
-let msg_player = document.querySelector("#msg-player");
-let btn_start = document.querySelector("#btn-start");
-let btn_restart = document.querySelector("#btn-restart");
-let btn_end = document.querySelector("#btn-end");
+let msg_player = document.querySelector("#msg_player");
+let btn_start = document.querySelector("#btn_start");
+let btn_restart = document.querySelector("#btn_restart");
+let btn_end = document.querySelector("#btn_end");
 
+let gameStatus;
+let partidaStatus;
+let turn;
 let arrayTotal = [];
 let arrayPlayer1 = [];
 let name_player1;
@@ -15,44 +18,52 @@ let name_player2;
 let arrayPlayer2 = [];
 let vic_player2 = 0;
 
-
 // Iniciar jogo
-gameStatus = true;
-let turn = 'Player 1';
-msg_player.innerHTML = turn + ' <img src="images/img-bola.png" id="img_player">';
-resultados.classList.add('display_none');
+name_player1 = localStorage.getItem('name_player1');
+name_player2 = localStorage.getItem('name_player2');
+turn = localStorage.getItem('turn');
 
-/*btn_start.addEventListener('click', () => {
-        window.location.href = 'gamePage.html';
-        msg_player.textContent = turn;
-        gameStatus = true;
-        name_player1 = document.querySelector("#name-player1").value;
-        name_player2 = document.querySelector("#name-player2").value;
-    });*/
+if(turn === 'Player 1'){
+    msg_player.innerHTML = name_player1;
+}
+else{
+    msg_player.innerHTML = name_player2;
+}
+document.getElementById("name_p1").textContent = name_player1;
+document.getElementById("name_p2").textContent = name_player2;
+gameStatus = true;
+partidaStatus = true;
+resultados.classList.add('display_none');
 
 // Nova partida
 function newMatch(){
     gameStatus = true;
+    partidaStatus = true;
     btn_restart.textContent = 'Nova Partida';
-    btn_end.textContent = 'Finaizar Jogo';
+    btn_end.textContent = 'Finalizar Jogo';
     resultados.classList.add('display_none');
     tabuleiro.classList.remove('display_none');
     placar.classList.remove('display_none');
 
-    turn = 'Player 1';
-    msg_player.innerHTML = turn + ' <img src="images/img-bola.png" id="img_player">';
+    if(turn == 'Player 1'){
+        msg_player.innerHTML = name_player1;
+    }
+    else{
+        msg_player.innerHTML = name_player2;
+    }
     arrayPlayer1 = [];
     arrayPlayer2 = [];
     arrayTotal = [];
     positions.forEach(function(pos){
-        pos.src = 'images/img-branca.png';
+        pos.querySelector('img').src = 'images/img-branca.png';
     });
 }
 btn_restart.addEventListener('click', newMatch);
 
-// Finalizar partida
+// Finalizar jogo
 function endGame(){
     gameStatus = false;
+    partidaStatus = false;
     msg_player.textContent = '';
     btn_restart.textContent = 'Novo Jogo';
     btn_end.textContent = 'Voltar Página Incial';
@@ -60,37 +71,40 @@ function endGame(){
     tabuleiro.classList.add('display_none');
     placar.classList.add('display_none');
 
-    document.querySelector("#result_player1").textContent = 'Player 1: ' + vic_player1 + ' vitórias';
-    document.querySelector("#result_player2").textContent = 'Player 2: ' + vic_player2 + ' vitórias';
+    document.querySelector("#result_player1").textContent = name_player1 + ': ' + vic_player1 + ' vitórias';
+    document.querySelector("#result_player2").textContent = name_player2 + ': ' + vic_player2 + ' vitórias';
     if(vic_player1 > vic_player2){
-        document.querySelector("#result_final").textContent = "Player 1 é vitorioso";
+        document.querySelector("#result_final").textContent = name_player1 + " é o(a) vencedor(a)";
     }
     else if(vic_player1 < vic_player2){
-        document.querySelector("#result_final").textContent = "Player 2 é vitorioso";
+        document.querySelector("#result_final").textContent = name_player2 + " é o(a) vencedor(a)";
     }
     else{
         document.querySelector("#result_final").textContent = "Empate";
     }
 
     vic_player1 = 0;
-    document.querySelector("#player1 p").textContent = vic_player1;
+    document.querySelector("#scores1").textContent = vic_player1;
     vic_player2 = 0;
-    document.querySelector("#player2 p").textContent = vic_player2;
+    document.querySelector("#scores2").textContent = vic_player2;
     turn = 'Player 1';
     arrayPlayer1 = [];
     arrayPlayer2 = [];
     arrayTotal = [];
 }
-if(gameStatus){
-    btn_end.addEventListener('click', endGame);
-}
-else{
-    btn_end.addEventListener('click', () => {window.location.href = 'loginPage.html'});
-}
+btn_end.addEventListener('click', function(){
+        if(gameStatus == true){
+            endGame();
+        }
+        else{
+            localStorage.clear();
+            window.location.href='loginPage.html';
+        }
+    });
 
 // Partidas
 function play(pos){
-    let idPosition = pos.target.id;
+    let idPosition = pos.currentTarget.id;
     if(arrayPlayer1.includes(idPosition) || arrayPlayer2.includes(idPosition)){
         alert('Posição já marcada');
     }
@@ -98,21 +112,20 @@ function play(pos){
         if(turn === 'Player 1'){
             arrayPlayer1.push(idPosition);
             arrayTotal.push(idPosition);
-            pos.target.src = 'images/img-bola.png';
+            pos.currentTarget.querySelector('img').src = 'images/img-bola.png';
             checkForWin(arrayPlayer1, 1);
         }
         else{
             arrayPlayer2.push(idPosition);
             arrayTotal.push(idPosition);
-            pos.target.src = 'images/img-x.png';
+            pos.currentTarget.querySelector('img').src = 'images/img-x.png';
             checkForWin(arrayPlayer2, 2);
-            document.querySelector("#player2 p").textContent = vic_player2;
         }
     }
 }
 positions.forEach(pos => {
         pos.addEventListener('click', (pos) => {
-            if(gameStatus){
+            if(partidaStatus){
                 play(pos);
             }
             else{
@@ -123,12 +136,8 @@ positions.forEach(pos => {
 
 // Resultado
 function checkForWin(array, player){
-    if(arrayTotal.includes('p1') && arrayTotal.includes('p2') && arrayTotal.includes('p3') && arrayTotal.includes('p4') && arrayTotal.includes('p5') && arrayTotal.includes('p6') && arrayTotal.includes('p7') && arrayTotal.includes('p8') && arrayTotal.includes('p9')
-    ){
-        msg_player.innerHTML = 'Jogo Finalizado <br> Deu Velha';
-        gameStatus = false;
-    }
-    else if(
+    // Vitória de um dos players
+    if(
         (array.includes('p1') && array.includes('p2') && array.includes('p3')) ||
         (array.includes('p4') && array.includes('p5') && array.includes('p6')) ||
         (array.includes('p7') && array.includes('p8') && array.includes('p9')) ||
@@ -138,25 +147,35 @@ function checkForWin(array, player){
         (array.includes('p1') && array.includes('p5') && array.includes('p9')) ||
         (array.includes('p3') && array.includes('p5') && array.includes('p7'))
     ){
-        msg_player.innerHTML = 'Jogo Finalizado <br> Vitória do Player ' + player;
-        gameStatus = false;
+        partidaStatus = false;
         if(player === 1){
+            msg_player.innerHTML = 'Partida Finalizada <br> Vitória de ' + name_player1;
             vic_player1++;
-            document.querySelector("#player1 p").textContent = vic_player1;
+            document.querySelector("#scores1").textContent = vic_player1;
+            turn = 'Player 1';
         }
         else{
+            msg_player.innerHTML = 'Partida Finalizada <br> Vitória de ' + name_player2;
             vic_player2++;
-            document.querySelector("#player2 p").textContent = vic_player2;
+            document.querySelector("#scores2").textContent = vic_player2;
+            turn = 'Player 2';
         }
     }
+    // Partida deu velha
+    else if(arrayTotal.includes('p1') && arrayTotal.includes('p2') && arrayTotal.includes('p3') && arrayTotal.includes('p4') && arrayTotal.includes('p5') && arrayTotal.includes('p6') && arrayTotal.includes('p7') && arrayTotal.includes('p8') && arrayTotal.includes('p9')
+    ){
+        partidaStatus = false;
+        msg_player.innerHTML = 'Partida Finalizada <br> Deu Velha';
+    }
+    // Partida continua
     else{
         if(player === 1){
             turn = 'Player 2';
-            msg_player.innerHTML = turn + ' <img src="images/img-x.png" id="img_player">';
+            msg_player.innerHTML = name_player2;
         }
         else{
             turn = 'Player 1';
-            msg_player.innerHTML = turn + ' <img src="images/img-bola.png" id="img_player">';
+            msg_player.innerHTML = name_player1;
         }
     }
 }
