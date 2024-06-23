@@ -98,7 +98,7 @@ btn_end.addEventListener('click', function(){
         }
         else{
             localStorage.clear();
-            window.location.href='loginPage.html';
+            window.location.href='index.html';
         }
     });
 
