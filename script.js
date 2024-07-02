@@ -55,7 +55,7 @@ function newMatch(){
     arrayPlayer2 = [];
     arrayTotal = [];
     positions.forEach(function(pos){
-        pos.querySelector('img').src = 'images/img-branca.png';
+        pos.innerHTML = '';
     });
 }
 btn_restart.addEventListener('click', newMatch);
@@ -65,8 +65,8 @@ function endGame(){
     gameStatus = false;
     partidaStatus = false;
     msg_player.textContent = '';
-    btn_restart.textContent = 'Novo Jogo';
-    btn_end.textContent = 'Voltar Página Incial';
+    btn_restart.innerHTML = 'Novo <br> Jogo';
+    btn_end.textContent = 'Página Inicial';
     resultados.classList.remove('display_none');
     tabuleiro.classList.add('display_none');
     placar.classList.add('display_none');
@@ -112,13 +112,13 @@ function play(pos){
         if(turn === 'Player 1'){
             arrayPlayer1.push(idPosition);
             arrayTotal.push(idPosition);
-            pos.currentTarget.querySelector('img').src = 'images/img-bola.png';
+            pos.currentTarget.innerHTML = '<img src="images/img-bola.png" class="img_positions">';
             checkForWin(arrayPlayer1, 1);
         }
         else{
             arrayPlayer2.push(idPosition);
             arrayTotal.push(idPosition);
-            pos.currentTarget.querySelector('img').src = 'images/img-x.png';
+            pos.currentTarget.innerHTML = '<img src="images/img-x.png" class="img_positions">';
             checkForWin(arrayPlayer2, 2);
         }
     }
