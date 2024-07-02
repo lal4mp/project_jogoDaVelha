@@ -134,6 +134,7 @@ button:hover {
     background-color: transparent;
     border: 2px solid #46dede;
     color: #46dede;
+    text-align: center;
     font-family: "Courier Prime";
     font-weight: 400;
     font-style: italic;
