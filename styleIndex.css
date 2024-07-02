@@ -15,7 +15,8 @@ h1 {
     top: 10vh;
     font-family: "Courier Prime";
     font-weight: 700;
-    font-size: 8vh;
+    font-size: 60px;
+    text-align: center;
     color: #46dede;
     text-shadow: 1px 1px 5px #46dede;
 }
@@ -78,4 +79,10 @@ label {
 .img_player {
     width: 15px;
     height: 15px;
+}
+
+@media screen and (max-width: 500px) {
+    h1{
+        font-size: 35px;
+    }
 }

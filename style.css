@@ -149,3 +149,14 @@ button:hover {
 .display_none {
     display: none;
 }
+
+@media screen and (max-width: 500px) {
+    button {
+        width: 12vh;
+        height: 12vh;
+    }
+    .div_buttons {
+        position: absolute;
+        bottom: 2vh;
+    }
+}
