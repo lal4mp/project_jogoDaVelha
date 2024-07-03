@@ -21,16 +21,17 @@ body{
     width: 100vw;
     height: 100vh;
     position: absolute;
-    top: -100px;
+    top: -0;
     display: flex;
     justify-content: space-between;
     opacity: 0.05;
     overflow: hidden;
+    pointer-events: none;
 }
 .img_background {
     width: 30px;
     height: 30px;
-    animation: backgroundAnimation 2.2s linear infinite;
+    animation: backgroundAnimation 3s linear infinite;
 }
 @keyframes backgroundAnimation {
     0% {
