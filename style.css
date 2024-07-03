@@ -116,7 +116,7 @@ button:hover {
     align-items: center;
 
     font-family: "Courier Prime";
-    font-size: 15px;
+    font-size: 17px;
     text-align: center;
 }
 #result_player1, #result_player2 {
@@ -153,8 +153,10 @@ button:hover {
     text-align: center;
 }
 .btn_actions:hover {
-    background-color: transparent;
     box-shadow: 0 0 8px #46dede;
+}
+.btn_actions::after {
+    box-shadow: none;
 }
 
 /* classe display none */
@@ -162,12 +164,18 @@ button:hover {
     display: none;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 500px) {
     button {
         width: 12vh;
         height: 12vh;
     }
     .div_resultados {
         width: 75vw;
+        font-size: 15px;
+    }
+    .btn_actions {
+        width: 100px;
+        height: 35px;
+        font-size: 12px;
     }
 }

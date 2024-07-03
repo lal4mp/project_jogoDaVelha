@@ -21,27 +21,18 @@ body{
     width: 100vw;
     height: 100vh;
     position: absolute;
-    top: -0;
-    display: flex;
-    justify-content: space-between;
-    opacity: 0.05;
-    overflow: hidden;
+    background-size: 30px 30px;
+    animation: fadeSymbols 10s linear infinite;
     pointer-events: none;
 }
-.img_background {
-    width: 30px;
-    height: 30px;
-    animation: backgroundAnimation 3s linear infinite;
-}
-@keyframes backgroundAnimation {
-    0% {
-        transform: translateY(100vh)  scale(0.8);
+@keyframes fadeSymbols {
+    0%, 100% { 
+        opacity: 0.05;  
+        background-image: url('images/img-bola.png');
     }
     50% {
-        transform: translateY(50vh) scale(1);
-    }
-    100% {
-        transform: translateY(0vh) scale(0.5);
+        opacity: 0.05;  
+        background-image: url('images/img-x.png');
     }
 }
 
@@ -94,8 +85,8 @@ label {
 .btn_actions {
     position: absolute;
     bottom: 15vh;
-    width: 130px;
-    height: 30px;
+    width: 120px;
+    height: 40px;
     background-color: transparent;
 
     color: #46dede;
@@ -109,6 +100,9 @@ label {
 }
 .btn_actions:hover {
     box-shadow: 0 0 8px #46dede;
+}
+.btn_actions::after {
+    box-shadow: none;
 }
 
 /* imagens */
@@ -124,5 +118,10 @@ label {
     label {
         display: flex;
         flex-direction: column;
+    }
+    .btn_actions {
+        width: 100px;
+        height: 35px;
+        font-size: 12px;
     }
 }
