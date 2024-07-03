@@ -105,6 +105,7 @@ button:hover {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    text-align: center;
     border: 2px solid #46dede;
     padding: 8px 30px;
     font-family: "Courier Prime";
