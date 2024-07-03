@@ -1,22 +1,26 @@
 @import url('https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 
+*{
+    margin: 0;
+}
+
 body{
     width: 100vw;
     height: 100vh;
-    margin: 0;
+    background-color: #381868;
+
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
-    background-color: #381868;
 }
 /* título e textos */
 h1 {
     position: absolute;
-    top: 10vh;
+    top: 15vh;
     font-family: "Courier Prime";
     font-weight: 700;
-    font-size: 60px;
-    text-align: center;
+    font-size: 55px;
     color: #46dede;
     text-shadow: 1px 1px 5px #46dede;
 }
@@ -30,20 +34,17 @@ h2 {
 
 /* inputs */
 .div_inputs {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    display: grid;
+    display: flex;
+    flex-direction: column;
     gap: 20px;
 }
 input {
-    width: 200px;
+    width: 300px;
     height: 25px;
     background-color: transparent;
-    box-shadow: 0.5px 0.5px 5px #46dede;
-    border: 2px solid #46dede;
     color: #dedede;
+    border: 2px solid #46dede;
+    box-shadow: 0.5px 0.5px 5px #46dede;
     outline: none;
     padding: 2px 0px 2px 8px;
 }
@@ -51,24 +52,27 @@ label {
     display: flex;
     align-items: center;
     gap: 8px;
+
+    color: rgb(222, 222, 222);
     font-family: "Courier Prime";
     font-weight: 400;
     font-size: 15px;
-    color: rgb(222, 222, 222);
 }
     
 /* botão de iniciar */
 .btn_actions {
     position: absolute;
     bottom: 15vh;
+    width: 130px;
     height: 30px;
     background-color: transparent;
+
     color: #46dede;
     font-family: "Courier Prime";
-    text-align: center;
     font-weight: 400;
     font-style: italic;
     font-size: 15px;
+    text-align: center;
     border: 2px solid #46dede;
     cursor: pointer;
 }
@@ -84,6 +88,10 @@ label {
 
 @media screen and (max-width: 500px) {
     h1{
-        font-size: 35px;
+        font-size: 40px;
+    }
+    label {
+        display: flex;
+        flex-direction: column;
     }
 }
