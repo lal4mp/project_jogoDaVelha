@@ -155,7 +155,7 @@ button:hover {
 .btn_actions:hover {
     box-shadow: 0 0 8px #46dede;
 }
-.btn_actions::after {
+.btn_actions:active {
     box-shadow: none;
 }
 
