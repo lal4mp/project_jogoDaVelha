@@ -21,6 +21,7 @@ body{
     width: 100vw;
     height: 100vh;
     position: absolute;
+<<<<<<< HEAD
     background-size: 30px 30px;
     animation: fadeSymbols 10s linear infinite;
     pointer-events: none;
@@ -29,6 +30,23 @@ body{
     0%, 100% { 
         opacity: 0.05;  
         background-image: url('images/img-bola.png');
+=======
+    top: -0px;
+    display: flex;
+    justify-content: space-between;
+    opacity: 0.05;
+    overflow: hidden;
+    pointer-events: none;
+}
+.img_background {
+    width: 30px;
+    height: 30px;
+    animation: backgroundAnimation 3s linear infinite;
+}
+@keyframes backgroundAnimation {
+    0% {
+        transform: translateY(100vh) scale(0.8);
+>>>>>>> 342fdf923a583ee4a2d2b5854414ebe91e30cd07
     }
     50% {
         opacity: 0.05;  
@@ -120,8 +138,14 @@ label {
         flex-direction: column;
     }
     .btn_actions {
+<<<<<<< HEAD
         width: 100px;
         height: 35px;
         font-size: 12px;
+=======
+        width: 130px;
+        height: 50px;
+        text-align: center;
+>>>>>>> 342fdf923a583ee4a2d2b5854414ebe91e30cd07
     }
 }
