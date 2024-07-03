@@ -144,6 +144,7 @@ button:hover {
     background-color: transparent;
     border: 2px solid #46dede;
     cursor: pointer;
+    touch-action: manipulation;
 
     color: #46dede;
     font-family: "Courier Prime";
