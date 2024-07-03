@@ -21,7 +21,6 @@ body{
     width: 100vw;
     height: 100vh;
     position: absolute;
-    bottom: 0;
     display: flex;
     justify-content: space-between;
     opacity: 0.05;
@@ -36,6 +35,7 @@ body{
 @keyframes backgroundAnimation {
     0% {
         transform: translateY(100vh)  scale(0.8);
+        opacity: 0;
     }
     50% {
         transform: translateY(50vh) scale(1);
@@ -124,5 +124,10 @@ label {
     label {
         display: flex;
         flex-direction: column;
+    }
+    .btn_actions {
+        width: 130px;
+        height: 40px;
+        text-align: center;
     }
 }
