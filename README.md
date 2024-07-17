@@ -1,1 +1,1 @@
-https://lal4mp.github.io/project_jogoDaVelha/
+https://lalamp.github.io/project_jogoDaVelha/
